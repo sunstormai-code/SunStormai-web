@@ -688,35 +688,53 @@
               <span class="form-error-msg">Required</span>
             </div>
 
+            <div class="form-row">
+              <div class="form-group">
+                <label for="teamSize">Team Size</label>
+                <select id="teamSize" name="teamSize">
+                  <option value="">Select size</option>
+                  <option value="1-5">1–5 people</option>
+                  <option value="6-20">6–20 people</option>
+                  <option value="21-50">21–50 people</option>
+                  <option value="50+">50+ people</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="preferredTime">Preferred Call Time</label>
+                <select id="preferredTime" name="preferredTime">
+                  <option value="">Select preference</option>
+                  <option value="morning">Morning (9am–12pm)</option>
+                  <option value="afternoon">Afternoon (12pm–5pm)</option>
+                  <option value="evening">Evening (5pm–7pm)</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+            </div>
+
             <div class="form-group">
-              <label for="automate">What would you like to automate? <span class="req">*</span></label>
-              <textarea id="automate" name="automate" placeholder="Describe the process, pain point, or opportunity you're looking to address. The more detail, the better our prep."></textarea>
+              <label for="painPoint">What would you like to automate? <span class="req">*</span></label>
+              <textarea id="painPoint" name="painPoint" placeholder="Describe the process, pain point, or opportunity you're looking to address. The more detail, the better our prep."></textarea>
               <span class="form-error-msg">Please describe what you'd like to automate</span>
             </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="timeline">Timeline</label>
-                <select id="timeline" name="timeline">
-                  <option value="">Select timeline</option>
-                  <option value="asap">ASAP — I need this now</option>
-                  <option value="1-3mo">1–3 months</option>
-                  <option value="3-6mo">3–6 months</option>
-                  <option value="exploring">Still exploring</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="budget">Monthly Budget</label>
-                <select id="budget" name="budget">
-                  <option value="">Select range</option>
-                  <option value="under-2k">Under $2,000</option>
-                  <option value="2k-5k">$2,000 – $5,000</option>
-                  <option value="5k-10k">$5,000 – $10,000</option>
-                  <option value="10k-plus">$10,000+</option>
-                  <option value="unknown">Not sure yet</option>
-                </select>
-              </div>
+            <div class="form-group">
+              <label for="notes">Anything else we should know?</label>
+              <textarea id="notes" name="notes" placeholder="Tech stack, current tools, constraints, budget range — anything helpful." style="min-height:80px;"></textarea>
             </div>
+
+            <div class="form-group">
+              <label for="source">How did you hear about us?</label>
+              <select id="source" name="source">
+                <option value="">Select one</option>
+                <option value="google">Google / Search</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="referral">Referral</option>
+                <option value="social">Social Media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div id="submitError" style="display:none;font-size:0.82rem;color:var(--red-hot);margin-top:0.75rem;"></div>
 
             <button type="submit" class="btn btn-primary form-submit">
               Request Discovery Call →
@@ -726,8 +744,8 @@
           <!-- Success State -->
           <div class="form-success" id="formSuccess">
             <img src="assets/logo.svg" alt="" class="success-icon" width="60" height="60">
-            <h3>Request Received.</h3>
-            <p>We'll review your submission and reach out within one business day to confirm your call.</p>
+            <h3>You're booked.</h3>
+            <p>Check your email for confirmation.</p>
           </div>
         </div>
 
@@ -922,12 +940,14 @@
     // ── FORM VALIDATION & SUBMIT ──
     const form = document.getElementById('bookingForm');
     const success = document.getElementById('formSuccess');
+    const submitError = document.getElementById('submitError');
+    const WEBHOOK = 'https://hook.us2.make.com/oms26q7vwknaynrc47phdj13gt8fjq3n';
 
     function validateField(field) {
       const group = field.closest('.form-group');
       const isEmpty = !field.value.trim();
       const isEmailInvalid = field.type === 'email' && field.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
-      const isRequired = field.hasAttribute('required') || field.closest('.form-group').querySelector('label .req');
+      const isRequired = field.closest('.form-group').querySelector('label .req');
 
       let invalid = false;
       if (isRequired && isEmpty) invalid = true;
@@ -947,12 +967,11 @@
       });
     });
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       let valid = true;
 
-      // Required fields
-      ['firstName', 'lastName', 'email', 'company', 'automate'].forEach(id => {
+      ['firstName', 'lastName', 'email', 'company', 'painPoint'].forEach(id => {
         const field = document.getElementById(id);
         if (!validateField(field)) valid = false;
       });
@@ -962,15 +981,40 @@
         return;
       }
 
-      // Simulate submission
       const btn = form.querySelector('.form-submit');
       btn.textContent = 'Sending…';
       btn.disabled = true;
+      submitError.style.display = 'none';
 
-      setTimeout(() => {
+      const payload = {
+        firstName:     document.getElementById('firstName').value.trim(),
+        lastName:      document.getElementById('lastName').value.trim(),
+        email:         document.getElementById('email').value.trim(),
+        company:       document.getElementById('company').value.trim(),
+        teamSize:      document.getElementById('teamSize').value,
+        preferredTime: document.getElementById('preferredTime').value,
+        painPoint:     document.getElementById('painPoint').value.trim(),
+        notes:         document.getElementById('notes').value.trim(),
+        source:        document.getElementById('source').value,
+      };
+
+      try {
+        const res = await fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
         form.style.display = 'none';
         success.classList.add('visible');
-      }, 900);
+      } catch (err) {
+        btn.textContent = 'Request Discovery Call →';
+        btn.disabled = false;
+        submitError.textContent = 'Something went wrong. Please try again or email us at hello@sunstormai.com.';
+        submitError.style.display = 'block';
+      }
     });
   </script>
 </body>
