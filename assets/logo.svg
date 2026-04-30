@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" aria-label="SunstormAI mark">
+  <!-- Outer ring stroke -->
+  <circle cx="50" cy="50" r="47" stroke="#C8142A" stroke-width="2"/>
+  <!-- 12-point starburst with evenodd hollow centre -->
+  <path fill-rule="evenodd" fill="#C8142A"
+    d="M50,6 L57.24,22.95 L72,11.9 L69.8,30.2 L88.1,28 L77.05,42.75
+       L94,50 L77.05,57.25 L88.1,72 L69.8,69.8 L72,88.1 L57.24,77.05
+       L50,94 L42.75,77.05 L28,88.1 L30.2,69.8 L11.9,72 L22.95,57.25
+       L6,50 L22.95,42.75 L11.9,28 L30.2,30.2 L28,11.9 L42.75,22.95 Z
+       M68,50 A18,18 0 0,1 32,50 A18,18 0 0,1 68,50 Z"/>
+  <!-- Hot-red centre dot -->
+  <circle cx="50" cy="50" r="4.5" fill="#FF4060"/>
+</svg>
