@@ -691,12 +691,20 @@
 
       <form id="bookingForm" novalidate>
 
-        <!-- Full name -->
-        <div class="field-group" id="fg-name">
-          <label class="field-label" for="name">Full name <span class="req">*</span></label>
-          <input class="field-input" type="text" id="name" name="name"
-            placeholder="Alex Rivera" autocomplete="name">
-          <span class="field-error">Please enter your full name</span>
+        <!-- Name row -->
+        <div class="field-row">
+          <div class="field-group" id="fg-firstName">
+            <label class="field-label" for="firstName">First name <span class="req">*</span></label>
+            <input class="field-input" type="text" id="firstName" name="firstName"
+              placeholder="Alex" autocomplete="given-name">
+            <span class="field-error">Required</span>
+          </div>
+          <div class="field-group" id="fg-lastName">
+            <label class="field-label" for="lastName">Last name <span class="req">*</span></label>
+            <input class="field-input" type="text" id="lastName" name="lastName"
+              placeholder="Rivera" autocomplete="family-name">
+            <span class="field-error">Required</span>
+          </div>
         </div>
 
         <!-- Work email -->
@@ -819,8 +827,8 @@
     <!-- SUCCESS STATE -->
     <div class="success-state" id="successState">
       <img src="assets/logo.svg" alt="" class="success-mark" width="64" height="64">
-      <h2>You're <em>booked.</em></h2>
-      <p>Check your email for confirmation. We'll review your brief and reach out within a few hours to lock in your slot.</p>
+      <h2>You are <em>booked!</em></h2>
+      <p>Check your email for confirmation.</p>
       <a href="index.html" class="success-back">← Back to SunstormAI</a>
     </div>
 
@@ -943,9 +951,16 @@
     group.classList.remove('has-error');
   }
 
-  function validateName() {
-    const g = document.getElementById('fg-name');
-    const v = document.getElementById('name').value.trim();
+  function validateFirstName() {
+    const g = document.getElementById('fg-firstName');
+    const v = document.getElementById('firstName').value.trim();
+    if (!v) { showError(g); return false; }
+    clearError(g); return true;
+  }
+
+  function validateLastName() {
+    const g = document.getElementById('fg-lastName');
+    const v = document.getElementById('lastName').value.trim();
     if (!v) { showError(g); return false; }
     clearError(g); return true;
   }
@@ -993,7 +1008,8 @@
   }
 
   // Live validation on blur
-  document.getElementById('name').addEventListener('blur', validateName);
+  document.getElementById('firstName').addEventListener('blur', validateFirstName);
+  document.getElementById('lastName').addEventListener('blur', validateLastName);
   document.getElementById('email').addEventListener('blur', validateEmail);
   document.getElementById('company').addEventListener('blur', validateCompany);
   document.getElementById('teamSize').addEventListener('change', validateTeamSize);
@@ -1003,7 +1019,7 @@
   });
 
   // Clear on input after error
-  ['name','email','company','painPoint'].forEach(id => {
+  ['firstName','lastName','email','company','painPoint'].forEach(id => {
     document.getElementById(id).addEventListener('input', () => {
       const g = document.getElementById(`fg-${id}`);
       if (g.classList.contains('has-error')) {
@@ -1018,7 +1034,8 @@
     e.preventDefault();
 
     const checks = [
-      validateName(),
+      validateFirstName(),
+      validateLastName(),
       validateEmail(),
       validateCompany(),
       validateTeamSize(),
@@ -1040,14 +1057,15 @@
     errEl.style.display = 'none';
 
     const payload = {
-      name:          document.getElementById('name').value.trim(),
-      email:         document.getElementById('email').value.trim(),
-      company:       document.getElementById('company').value.trim(),
-      teamSize:      document.getElementById('teamSize').value,
-      painPoint:     document.getElementById('painPoint').value.trim(),
-      source:        document.querySelector('input[name="source"]:checked')?.value || '',
-      preferredTime: document.getElementById('preferredTime').value,
-      notes:         document.getElementById('notes').value.trim(),
+      firstName:        document.getElementById('firstName').value.trim(),
+      lastName:         document.getElementById('lastName').value.trim(),
+      email:            document.getElementById('email').value.trim(),
+      companyName:      document.getElementById('company').value.trim(),
+      teamSize:         document.getElementById('teamSize').value,
+      preferredCallTime: document.getElementById('preferredTime').value,
+      whatToAutomate:   document.getElementById('painPoint').value.trim(),
+      anythingElse:     document.getElementById('notes').value.trim(),
+      howDidYouHear:    document.querySelector('input[name="source"]:checked')?.value || '',
     };
 
     try {
