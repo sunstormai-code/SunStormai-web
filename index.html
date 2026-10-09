@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SunstormAI — AI automation agency. We design and deploy intelligent systems that eliminate overhead and accelerate growth.">
-  <title>SunstormAI — AI Automation Agency</title>
+  <meta name="description" content="SunstormAI — AI lead response for home builders and high-ticket trades in Sydney. Every enquiry answered in 30 seconds, qualified, and booked into your calendar.">
+  <title>SunstormAI — AI Lead Response for Builders · Sydney</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -361,6 +361,20 @@
       font-size: 0.5rem;
     }
 
+    /* ── PROBLEM ── */
+    #problem {
+      padding: var(--section-py) var(--px);
+      background: var(--void);
+      position: relative;
+      z-index: 1;
+    }
+    #problem .section-head p {
+      font-size: 1.05rem;
+      color: rgba(250,248,246,0.55);
+      max-width: 640px;
+      line-height: 1.75;
+    }
+
     /* ── SERVICES ── */
     #services {
       padding: var(--section-py) var(--px);
@@ -438,7 +452,7 @@
 
     .process-steps {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 0;
       margin-top: 4rem;
       position: relative;
@@ -447,8 +461,8 @@
       content: '';
       position: absolute;
       top: 28px;
-      left: calc(10% + 22px);
-      right: calc(10% + 22px);
+      left: calc(16.67% + 22px);
+      right: calc(16.67% + 22px);
       height: 1px;
       background: linear-gradient(90deg, var(--red), rgba(200,20,42,0.15));
     }
@@ -718,6 +732,22 @@
 
     .pricing-cta { width: 100%; justify-content: center; }
 
+    .founding-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;
+    }
+    .founding-card {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .founding-card::before {
+      content: '★ FOUNDING BUILDER — 3 SPOTS REMAINING · SYDNEY ONLY';
+    }
+    .founding-card .pricing-price { margin-top: 0; }
+    .founding-card .pricing-features { text-align: left; }
+
     /* ── CTA BANNER ── */
     #cta-banner {
       padding: clamp(4rem, 8vw, 7rem) var(--px);
@@ -864,7 +894,7 @@
       .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card.featured::before { font-size: 0.6rem; }
       .footer-top { grid-template-columns: 1fr 1fr; }
-      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps { grid-template-columns: 1fr; gap: 2rem; }
       .process-steps::after { display: none; }
     }
 
@@ -915,16 +945,16 @@
   <!-- ═══ HERO ═══ -->
   <section id="hero">
     <div class="hero-content">
-      <div class="hero-label label">AI Automation Agency</div>
+      <div class="hero-label label">AI Lead Response · Sydney</div>
       <h1 class="hero-heading">
-        AUTOMATE<br>THE <em>UNREACHABLE.</em>
+        EVERY ENQUIRY<br>ANSWERED IN <em>30 SECONDS.</em>
       </h1>
       <p class="hero-sub">
-        SunstormAI deploys intelligent automation systems that eliminate overhead, compound advantage, and move at the speed of a storm. Built for companies that can't afford to wait.
+        AI lead response for home builders and high-ticket trades. Qualified, and booked into your calendar — before your competitor even replies.
       </p>
       <div class="hero-actions">
-        <a href="book.html" class="btn btn-primary">Book Discovery Call</a>
-        <a href="#work" class="btn btn-ghost">View Our Work →</a>
+        <a href="book.html" class="btn btn-primary">Book a 15-min demo</a>
+        <a href="#work" class="btn btn-ghost">See it in action →</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -937,35 +967,42 @@
   <div class="marquee-wrap">
     <div class="marquee-track">
       <div class="marquee-group">
-        <span class="marquee-item">AI Workflow Automation</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Custom AI Agents</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Data Intelligence</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">System Integration</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Claude</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">OpenAI</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">LangChain</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">n8n</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Make.com</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Zapier</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Platform Engineering</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">AI Strategy</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">30-Second Reply</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Missed-Call Text-Back</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Lead Qualification</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Calendar Booking</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">After-Hours Cover</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Sydney Builders</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Home Builders</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">High-Ticket Trades</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Site Visit Booked</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">AI Lead Response</span><span class="marquee-sep">◆</span>
       </div>
       <div class="marquee-group" aria-hidden="true">
-        <span class="marquee-item">AI Workflow Automation</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Custom AI Agents</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Data Intelligence</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">System Integration</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Claude</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">OpenAI</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">LangChain</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">n8n</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Make.com</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Zapier</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">Platform Engineering</span><span class="marquee-sep">◆</span>
-        <span class="marquee-item">AI Strategy</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">30-Second Reply</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Missed-Call Text-Back</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Lead Qualification</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Calendar Booking</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">After-Hours Cover</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Sydney Builders</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Home Builders</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">High-Ticket Trades</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">Site Visit Booked</span><span class="marquee-sep">◆</span>
+        <span class="marquee-item">AI Lead Response</span><span class="marquee-sep">◆</span>
       </div>
     </div>
   </div>
+
+  <!-- ═══ PROBLEM ═══ -->
+  <section id="problem">
+    <div class="container">
+      <div class="section-head" data-animate>
+        <div class="label">The Problem</div>
+        <h2 class="section-title">The first builder to reply usually wins the job.</h2>
+        <p>You're on site. An enquiry comes in at 2pm, you reply at 8pm — and by then they've already spoken to two other builders. Most homeowners go with whoever responds first. SunstormAI replies in 30 seconds, qualifies them, and books the site visit while you keep working.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- ═══ SERVICES ═══ -->
   <section id="services">
@@ -1021,35 +1058,24 @@
   <section id="process">
     <div class="container">
       <div class="section-head" data-animate>
-        <div class="label">How We Work</div>
-        <h2 class="section-title">Brief to Battle-Ready</h2>
-        <p>Five ruthlessly efficient stages from discovery to a system that runs while you sleep.</p>
+        <div class="label">How It Works</div>
+        <h2 class="section-title">Three steps. Fully automated.</h2>
       </div>
       <div class="process-steps">
         <div class="process-step" data-animate data-delay="1">
           <div class="step-num">01</div>
-          <h3>Discover</h3>
-          <p>Audit your operations. Identify the highest-ROI automation targets. Define success metrics before a single line of code is written.</p>
+          <h3>Enquiry comes in</h3>
+          <p>A website form, an ad, or a missed call — it all gets captured instantly.</p>
         </div>
         <div class="process-step" data-animate data-delay="2">
           <div class="step-num">02</div>
-          <h3>Architect</h3>
-          <p>Precision technical blueprint: systems, models, integrations, data flows, failure modes. Nothing is left ambiguous.</p>
+          <h3>Instant reply + qualify</h3>
+          <p>Your AI assistant texts back in seconds, asks about budget, land, plans and timeline, and filters out time-wasters.</p>
         </div>
         <div class="process-step" data-animate data-delay="3">
           <div class="step-num">03</div>
-          <h3>Build</h3>
-          <p>Our engineers build fast. Tested, documented, production-ready from day one. No prototypes dressed as products.</p>
-        </div>
-        <div class="process-step" data-animate data-delay="4">
-          <div class="step-num">04</div>
-          <h3>Deploy</h3>
-          <p>Go live with confidence. We handle migration, team training, and the transition until the system owns itself.</p>
-        </div>
-        <div class="process-step" data-animate data-delay="5">
-          <div class="step-num">05</div>
-          <h3>Optimize</h3>
-          <p>Continuous monitoring, iteration, and expansion. The system compounds in value as your business grows.</p>
+          <h3>Site visit booked</h3>
+          <p>Qualified leads drop straight into your calendar, and you get a text with all their details.</p>
         </div>
       </div>
     </div>
@@ -1095,59 +1121,24 @@
   <section id="pricing">
     <div class="container">
       <div class="section-head" data-animate>
-        <div class="label">Pricing</div>
-        <h2 class="section-title">Transparent. Scalable. Direct.</h2>
-        <p>No retainer games. No surprise invoices. You know exactly what you're getting before we start.</p>
+        <div class="label">Founding Builder Offer</div>
+        <h2 class="section-title">Taking on 3 founding builders in Sydney.</h2>
       </div>
-      <div class="pricing-grid">
-
-        <div class="pricing-card" data-animate data-delay="1">
-          <div class="pricing-tier">Foundation</div>
-          <div class="pricing-price"><sup>$</sup>4,500</div>
-          <div class="pricing-period">per month</div>
-          <p class="pricing-desc">For teams ready to automate their first high-impact workflow and prove the ROI before scaling.</p>
+      <div class="founding-wrap">
+        <div class="pricing-card featured founding-card" data-animate>
+          <div class="pricing-tier">Founding Builder</div>
+          <div class="pricing-price"><sup>$</sup>1,000 <span style="font-size:1rem;font-weight:400;color:rgba(250,248,246,0.4)">setup</span></div>
+          <div class="pricing-period">then $997/month</div>
+          <p class="pricing-desc">Live within 7 days. If it doesn't book you at least 3 site visits in the first month, that month's free.</p>
           <ul class="pricing-features">
-            <li>Up to 3 automated workflows</li>
-            <li>3 tool integrations</li>
-            <li>Monthly performance report</li>
-            <li>Email support (48h response)</li>
-            <li>1× strategy session/month</li>
+            <li>After-hours enquiry response in 30 seconds</li>
+            <li>Missed-call text-back</li>
+            <li>Lead qualification — budget, land, plans, timeline</li>
+            <li>Automatic calendar booking</li>
+            <li>SMS alert with full lead details to your phone</li>
           </ul>
-          <a href="book.html" class="btn btn-ghost pricing-cta">Get Started →</a>
+          <a href="book.html" class="btn btn-primary pricing-cta">Book a 15-min demo</a>
         </div>
-
-        <div class="pricing-card featured" data-animate data-delay="2">
-          <div class="pricing-tier">Growth</div>
-          <div class="pricing-price"><sup>$</sup>9,500</div>
-          <div class="pricing-period">per month</div>
-          <p class="pricing-desc">For scaling businesses deploying AI agents across operations, sales, or support — with a dedicated engineer in your corner.</p>
-          <ul class="pricing-features">
-            <li>Up to 10 automated workflows</li>
-            <li>Unlimited integrations</li>
-            <li>1 custom AI agent</li>
-            <li>Dedicated engineer</li>
-            <li>Slack support (4h response)</li>
-            <li>Weekly sync + reporting</li>
-          </ul>
-          <a href="book.html" class="btn btn-primary pricing-cta">Get Started →</a>
-        </div>
-
-        <div class="pricing-card" data-animate data-delay="3">
-          <div class="pricing-tier">Enterprise</div>
-          <div class="pricing-price">Custom</div>
-          <div class="pricing-period">tailored to scope</div>
-          <p class="pricing-desc">Full-scale AI automation platform deployment. Custom model training, embedded team, and SLA-backed uptime for mission-critical systems.</p>
-          <ul class="pricing-features">
-            <li>Unlimited workflows & agents</li>
-            <li>Custom model deployment</li>
-            <li>Embedded engineering team</li>
-            <li>99.9% SLA + 24/7 on-call</li>
-            <li>IP ownership & white-label option</li>
-            <li>Executive strategy partnership</li>
-          </ul>
-          <a href="book.html" class="btn btn-ghost pricing-cta">Talk to Us →</a>
-        </div>
-
       </div>
     </div>
   </section>
@@ -1155,11 +1146,11 @@
   <!-- ═══ CTA BANNER ═══ -->
   <section id="cta-banner">
     <div class="container cta-content">
-      <div class="label">The Decision Point</div>
-      <h2>Ready to automate everything that slows you down?</h2>
-      <p>30 minutes. No pitch deck. A direct conversation about what you need and whether we're the right team to build it.</p>
+      <div class="label">Ready to stop losing jobs after hours?</div>
+      <h2>Book a 15-minute demo. See it answer a live enquiry.</h2>
+      <p>No slides. I'll show you exactly how it works for a builder like you, and what it would take to have yours live.</p>
       <div class="cta-actions">
-        <a href="book.html" class="btn btn-primary">Book Discovery Call →</a>
+        <a href="book.html" class="btn btn-primary">Book a 15-min demo →</a>
         <a href="mailto:hello@sunstormai.com" class="btn btn-ghost">hello@sunstormai.com</a>
       </div>
     </div>
@@ -1174,59 +1165,40 @@
             <img src="assets/logo.svg" alt="SunstormAI" width="32" height="32">
             <span class="wordmark"><span class="w-sun">Sun</span><span class="w-storm">storm</span><span class="w-ai">AI</span></span>
           </a>
-          <p>AI automation agency turning raw intelligence into unstoppable operational advantage.</p>
-          <div class="social-links">
-            <a href="#" class="social-link" aria-label="X / Twitter">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="#" class="social-link" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="#" class="social-link" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            </a>
-          </div>
+          <p>AI lead response for home builders and high-ticket trades. Sydney, Australia.</p>
         </div>
 
         <div class="footer-col">
-          <h4>Services</h4>
+          <h4>What You Get</h4>
           <ul>
-            <li><a href="#services">Workflow Automation</a></li>
-            <li><a href="#services">Custom AI Agents</a></li>
-            <li><a href="#services">Data Intelligence</a></li>
-            <li><a href="#services">System Integration</a></li>
-            <li><a href="#services">AI Strategy</a></li>
-            <li><a href="#services">Platform Engineering</a></li>
+            <li><a href="#services">After-hours enquiries</a></li>
+            <li><a href="#services">Missed-call text-back</a></li>
+            <li><a href="#services">Lead qualifying</a></li>
+            <li><a href="#services">Calendar booking</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Company</h4>
+          <h4>Navigate</h4>
           <ul>
-            <li><a href="#work">Our Work</a></li>
-            <li><a href="#process">Process</a></li>
+            <li><a href="#problem">The Problem</a></li>
+            <li><a href="#work">See It In Action</a></li>
+            <li><a href="#process">How It Works</a></li>
             <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
-            <li><a href="book.html">Book a Call</a></li>
+            <li><a href="book.html">Book a 15-min demo</a></li>
             <li><a href="mailto:hello@sunstormai.com">hello@sunstormai.com</a></li>
-            <li><a href="#">LinkedIn</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2025 SunstormAI. All rights reserved.</p>
-        <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
+        <p>© 2025 SunstormAI. Sydney, Australia.</p>
       </div>
     </div>
   </footer>
