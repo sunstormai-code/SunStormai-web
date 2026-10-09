@@ -1,13 +1,14 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
-  if (!webhookUrl) return res.status(500).json({ error: 'Slack webhook not configured' });
+  let webhookUrl = process.env.SLACK_WEBHOOK_URL;
+  if (!webhookUrl) return res.status(500).json({ error: 'env-missing' });
+  webhookUrl = webhookUrl.trim();
+  if (typeof fetch !== 'function') return res.status(500).json({ error: 'no-fetch-node-version' });
   try {
     const d = req.body || {};
     const text = [
-      ':red_circle: *New lead — SunstormAI*',
-      '',
-      `*Name:* ${(d.firstName || '') + ' ' + (d.lastName || '')}`.trim(),
+      ':red_circle: *New lead — SunstormAI*', '',
+      `*Name:* ${((d.firstName||'')+' '+(d.lastName||'')).trim()}`,
       `*Email:* ${d.email || '—'}`,
       `*Company:* ${d.companyName || '—'}`,
       `*Team size:* ${d.teamSize || '—'}`,
@@ -21,9 +22,10 @@ export default async function handler(req, res) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text }),
     });
-    if (!r.ok) return res.status(502).json({ error: 'Slack post failed' });
+    const bodyText = await r.text();
+    if (!r.ok) return res.status(502).json({ error: 'slack-rejected', slackStatus: r.status, slackResponse: bodyText });
     return res.status(200).json({ ok: true });
   } catch (e) {
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({ error: 'crashed', detail: String((e && e.message) || e) });
   }
 }
