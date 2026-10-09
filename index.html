@@ -382,7 +382,7 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5px;
       background: rgba(200,20,42,0.12);
       border: 1px solid rgba(200,20,42,0.12);
@@ -570,6 +570,54 @@
       transition: gap 0.2s, color 0.2s;
     }
     .work-link:hover { gap: 0.85rem; color: var(--red-hot); }
+
+    /* ── DEMO SHOWCASE ── */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+
+    .demo-phone {
+      border: 1.5px solid rgba(200,20,42,0.3);
+      border-radius: 36px;
+      overflow: hidden;
+      background: var(--black-mid);
+      padding-top: 14px;
+    }
+    .demo-phone::before {
+      content: '';
+      display: block;
+      width: 52px;
+      height: 5px;
+      background: rgba(200,20,42,0.35);
+      border-radius: 3px;
+      margin: 0 auto 10px;
+    }
+    .demo-phone img {
+      width: 100%;
+      display: block;
+      min-height: 260px;
+      object-fit: cover;
+    }
+
+    .demo-caption {
+      margin-top: 1rem;
+      font-size: 0.83rem;
+      color: rgba(250,248,246,0.5);
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .demo-note {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.875rem;
+      color: rgba(250,248,246,0.35);
+      font-style: italic;
+    }
 
     /* ── PRICING ── */
     #pricing {
@@ -810,8 +858,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
       .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .demo-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
       .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card.featured::before { font-size: 0.6rem; }
       .footer-top { grid-template-columns: 1fr 1fr; }
@@ -824,6 +873,7 @@
       .hamburger { display: flex; }
       .services-grid { grid-template-columns: 1fr; }
       .work-grid { grid-template-columns: 1fr; }
+      .demo-grid { max-width: 340px; }
       .pricing-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
@@ -921,74 +971,46 @@
   <section id="services">
     <div class="container">
       <div class="section-head" data-animate>
-        <div class="label">Capabilities</div>
-        <h2 class="section-title">What We Build</h2>
-        <p>Six core capabilities. One obsession: making your operations impossible to outpace.</p>
+        <div class="label">What You Get</div>
+        <h2 class="section-title">One system. Every enquiry answered, qualified, and booked.</h2>
       </div>
       <div class="services-grid">
 
         <div class="service-card" data-animate data-delay="1">
           <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-            <polygon points="22,4 26,17 40,17 29,26 33,39 22,31 11,39 15,26 4,17 18,17" stroke-linejoin="round"/>
+            <circle cx="22" cy="22" r="16"/>
+            <path d="M22 12v10l6 4"/>
           </svg>
-          <h3>AI Workflow Automation</h3>
-          <p>Eliminate manual processes entirely. We architect n-step intelligent pipelines that handle decision logic, approvals, and edge cases with zero human intervention.</p>
+          <h3>After-hours enquiries</h3>
+          <p>Replies in 30 seconds, day or night, while you're on site or asleep.</p>
         </div>
 
         <div class="service-card" data-animate data-delay="2">
           <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="8" y="14" width="28" height="20" rx="2"/>
-            <path d="M16 14V10M28 14V10"/>
-            <circle cx="16" cy="24" r="2" fill="currentColor" stroke="none"/>
-            <circle cx="22" cy="24" r="2" fill="currentColor" stroke="none"/>
-            <circle cx="28" cy="24" r="2" fill="currentColor" stroke="none"/>
-            <path d="M8 30h28"/>
+            <path d="M10 8h10l3 7-4 3a22 22 0 0 0 7 7l3-4 7 3v10a2 2 0 0 1-2 2C15 36 8 29 8 10a2 2 0 0 1 2-2z"/>
           </svg>
-          <h3>Custom AI Agents</h3>
-          <p>Purpose-built agents trained on your context, operating across your tools, delivering results without babysitting. They think, act, and iterate autonomously.</p>
+          <h3>Missed-call text-back</h3>
+          <p>Miss a call on site? It texts them back instantly before they ring the next builder.</p>
         </div>
 
         <div class="service-card" data-animate data-delay="3">
           <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M6 34l9-10 7 6 8-12 8 8"/>
-            <rect x="4" y="6" width="36" height="28" rx="1"/>
-            <path d="M4 38h36"/>
+            <path d="M8 10h28l-10 14v12l-8-4V24z"/>
           </svg>
-          <h3>Data Intelligence</h3>
-          <p>Transform scattered data into decisive intelligence. Real-time pipelines, custom dashboards, predictive signals — so you act before competitors react.</p>
+          <h3>Qualifying</h3>
+          <p>Asks about budget, land, plans, and timeline. Filters out time-wasters so you only talk to real prospects.</p>
         </div>
 
         <div class="service-card" data-animate data-delay="4">
           <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="10" cy="22" r="5"/>
-            <circle cx="34" cy="10" r="5"/>
-            <circle cx="34" cy="34" r="5"/>
-            <path d="M15 22h8M29 13l-8 7M29 31l-8-7"/>
+            <rect x="6" y="10" width="32" height="28" rx="2"/>
+            <path d="M6 18h32M16 8v6M28 8v6"/>
+            <circle cx="16" cy="28" r="2" fill="currentColor" stroke="none"/>
+            <circle cx="22" cy="28" r="2" fill="currentColor" stroke="none"/>
+            <circle cx="28" cy="28" r="2" fill="currentColor" stroke="none"/>
           </svg>
-          <h3>System Integration</h3>
-          <p>Connect every tool in your stack — CRM, ERP, databases, APIs — unified under one intelligent automation layer. No more context switching. No more data silos.</p>
-        </div>
-
-        <div class="service-card" data-animate data-delay="5">
-          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M22 6l3 9h9l-7 6 3 9-8-6-8 6 3-9-7-6h9z"/>
-            <circle cx="22" cy="22" r="16"/>
-          </svg>
-          <h3>AI Strategy & Roadmap</h3>
-          <p>We've built it before. We'll map exactly what you need: automation audit, ROI model, vendor selection, and a phased deployment timeline that actually ships.</p>
-        </div>
-
-        <div class="service-card" data-animate data-delay="6">
-          <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="6" y="8" width="32" height="6" rx="1"/>
-            <rect x="6" y="19" width="32" height="6" rx="1"/>
-            <rect x="6" y="30" width="32" height="6" rx="1"/>
-            <circle cx="12" cy="11" r="1.5" fill="currentColor" stroke="none"/>
-            <circle cx="12" cy="22" r="1.5" fill="currentColor" stroke="none"/>
-            <circle cx="12" cy="33" r="1.5" fill="currentColor" stroke="none"/>
-          </svg>
-          <h3>Platform Engineering</h3>
-          <p>Production-grade AI infrastructure built to scale. No shortcuts, no technical debt, no vendor lock-in. Engineered for the 10x load you'll hit after we're done.</p>
+          <h3>Booking</h3>
+          <p>Drops qualified leads straight into your calendar and texts you their details.</p>
         </div>
 
       </div>
@@ -1037,40 +1059,35 @@
   <section id="work">
     <div class="container">
       <div class="section-head" data-animate>
-        <div class="label">Results</div>
-        <h2 class="section-title">What We've Built</h2>
-        <p>Numbers first. No fluff, no vanity metrics — just what changed after we shipped.</p>
+        <div class="label">See It In Action</div>
+        <h2 class="section-title">Watch it book a site visit</h2>
+        <p>A real conversation with our demo system — built for a fictional Sydney builder. This is exactly how it handles your enquiries.</p>
       </div>
-      <div class="work-grid">
+      <div class="demo-grid">
 
-        <div class="work-card" data-animate data-delay="1">
-          <div class="work-tag">E-Commerce · Support Automation</div>
-          <div class="work-metric" data-counter="73" data-suffix="%">0%</div>
-          <div class="work-metric-label">fewer support tickets</div>
-          <h3>From 1,200 weekly tickets to under 300 — automated.</h3>
-          <p>We built an AI-first customer support + order management layer that resolves the 73% of enquiries that never needed a human. Resolution time dropped from 26 hours to 41 minutes.</p>
-          <span class="work-link">View Case Study <span>→</span></span>
+        <div class="demo-item" data-animate data-delay="1">
+          <div class="demo-phone">
+            <img src="assets/sarah-1.png" alt="AI replies to after-hours enquiry">
+          </div>
+          <p class="demo-caption">Enquiry comes in after hours. Replies in seconds — asks about budget, land, and timeline.</p>
         </div>
 
-        <div class="work-card" data-animate data-delay="2">
-          <div class="work-tag">B2B SaaS · Sales Intelligence</div>
-          <div class="work-metric" data-counter="3" data-suffix=".1×">0</div>
-          <div class="work-metric-label">more qualified pipeline</div>
-          <h3>Same team. Triple the output. Zero extra headcount.</h3>
-          <p>A custom AI sales agent handles lead qualification, personalised outreach, and CRM updates — freeing the sales team to close, not chase. 60% reduction in SDR grind work.</p>
-          <span class="work-link">View Case Study <span>→</span></span>
+        <div class="demo-item" data-animate data-delay="2">
+          <div class="demo-phone">
+            <img src="assets/sarah-2.png" alt="AI declines to quote over text">
+          </div>
+          <p class="demo-caption">Politely refuses to quote over text. Filters out the tyre-kickers.</p>
         </div>
 
-        <div class="work-card" data-animate data-delay="3">
-          <div class="work-tag">Finance · Compliance Automation</div>
-          <div class="work-metric" data-counter="91" data-suffix="%">0%</div>
-          <div class="work-metric-label">manual review eliminated</div>
-          <h3>Compliance at machine speed. Zero incidents.</h3>
-          <p>Intelligent document processing and compliance automation that reads, classifies, and routes regulatory filings in milliseconds. The team now handles 3× the volume with the same headcount.</p>
-          <span class="work-link">View Case Study <span>→</span></span>
+        <div class="demo-item" data-animate data-delay="3">
+          <div class="demo-phone">
+            <img src="assets/sarah-3.png" alt="Qualified lead booked into calendar">
+          </div>
+          <p class="demo-caption">Qualified lead booked straight into the calendar. You get a text with every detail.</p>
         </div>
 
       </div>
+      <p class="demo-note">This is a demo on a made-up builder. Book a call and I'll show it running live.</p>
     </div>
   </section>
 
