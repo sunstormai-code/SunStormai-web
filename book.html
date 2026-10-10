@@ -786,7 +786,7 @@
         <div class="picker-section field-group" id="fg-preferredTime">
           <div class="picker-header">
             <label class="field-label">Preferred time <span class="req">*</span></label>
-            <span class="picker-tz">AWST · UTC+8</span>
+            <span class="picker-tz">SYDNEY · AEST/AEDT</span>
           </div>
 
           <div class="day-scroller">
@@ -927,7 +927,7 @@
     const input   = document.getElementById('preferredTime');
     const confirm = document.getElementById('timeConfirm');
     if (selectedDay && selectedTime) {
-      const val = `${selectedDay.label} · ${selectedTime} AWST`;
+      const val = `${selectedDay.label} · ${selectedTime} AEST/AEDT`;
       input.value = val;
       confirm.textContent = val;
       confirm.style.display = 'flex';
